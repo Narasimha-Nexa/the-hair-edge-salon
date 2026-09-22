@@ -28,10 +28,13 @@ export default function Services() {
 
   const categories = salonConfig.categories;
 
-  const filteredServices: Service[] =
-    activeCategory === "all"
-      ? categories.flatMap((cat) => cat.services)
-      : categories.find((cat) => cat.id === activeCategory)?.services || [];
+  const filteredServices: Service[] = useMemo(
+    () =>
+      activeCategory === "all"
+        ? categories.flatMap((cat) => cat.services)
+        : categories.find((cat) => cat.id === activeCategory)?.services || [],
+    [activeCategory, categories]
+  );
 
   const pages = useMemo(
     () => chunkServices(filteredServices, MOBILE_PAGE_SIZE),
@@ -93,33 +96,38 @@ export default function Services() {
             ))}
           </div>
 
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-salon-surface to-transparent md:hidden" aria-hidden="true" />
+        </div>
+
+        <div
+          className="mt-4 flex items-center justify-center gap-4 md:hidden"
+          role="group"
+          aria-label="Browse services pages"
+        >
           <button
             type="button"
             onClick={() => scrollByPage(-1)}
-            className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-salon-primary/80 backdrop-blur border border-white/10 text-salon-gold p-2 rounded-full shadow-lg hover:bg-salon-primary focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-surface"
+            className="shrink-0 bg-salon-primary border border-white/15 text-salon-gold p-2.5 rounded-full shadow-sm hover:border-salon-gold/60 transition-colors focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-surface"
             aria-label="Previous services"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
+          <p className="text-salon-muted text-xs text-center">
+            Swipe to browse all {filteredServices.length} services
+          </p>
           <button
             type="button"
             onClick={() => scrollByPage(1)}
-            className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-salon-primary/80 backdrop-blur border border-white/10 text-salon-gold p-2 rounded-full shadow-lg hover:bg-salon-primary focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-surface"
+            className="shrink-0 bg-salon-primary border border-white/15 text-salon-gold p-2.5 rounded-full shadow-sm hover:border-salon-gold/60 transition-colors focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-surface"
             aria-label="Next services"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
-
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-salon-surface to-transparent md:hidden" aria-hidden="true" />
         </div>
-
-        <p className="md:hidden text-center text-salon-muted text-xs mt-4">
-          Swipe to browse all {filteredServices.length} services
-        </p>
 
         {filteredServices.length === 0 && (
           <div className="text-center py-12 animate-fade-in-up">
