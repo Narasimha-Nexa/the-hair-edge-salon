@@ -46,3 +46,6 @@ next-env.d.ts
 
 # agents
 .freebuff
+
+# Local Netlify folder
+.netlify
