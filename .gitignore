@@ -15,6 +15,7 @@
 # dev server logs (regenerated on every run)
 dev-server.log
 dev-server.log.err
+next-*.log
 
 # production
 /build
@@ -41,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# agents
+.freebuff

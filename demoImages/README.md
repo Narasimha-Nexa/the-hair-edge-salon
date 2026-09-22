@@ -1,6 +1,6 @@
 # Hair Edge Unisex Salon — Demo Screenshots
 
-Current build captured on 22 Sep 2026 · all shots at **2× (Retina) quality** · dev server `localhost:3000`
+Current build captured on 22 Sep 2026 (full-project refresh) · all shots at **2× (Retina) quality** · dev server `localhost:3100`
 
 ## Desktop — 1440×900 (rendered 2880×1800)
 
