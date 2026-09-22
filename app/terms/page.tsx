@@ -20,7 +20,7 @@ export default function TermsOfService() {
   });
 
   return (
-    <main className="min-h-screen bg-salon-primary">
+    <main id="main-content" className="min-h-screen bg-salon-primary">
       <Navbar />
       <section className="py-20 md:py-28 px-4">
         <div className="max-w-3xl mx-auto">

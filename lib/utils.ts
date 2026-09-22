@@ -60,8 +60,7 @@ export function generateBookingMessage(
   phone: string,
   service: string,
   preferredDate?: string,
-  preferredTime?: string,
-  callbackRequested: boolean = false
+  preferredTime?: string
 ): string {
   let message = `✂️ *Appointment Booking Request*
 

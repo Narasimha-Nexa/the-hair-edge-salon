@@ -7,11 +7,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' data: https://fonts.gstatic.com",
       "img-src 'self' data: https:",
-      "connect-src 'self' ws://localhost:3000 ws://127.0.0.1:3000",
+      "connect-src 'self' ws://localhost:3000 ws://127.0.0.1:3000 https://www.google-analytics.com https://region1.google-analytics.com",
       "frame-src https://www.google.com https://maps.google.com",
       "object-src 'none'",
       "base-uri 'self'",

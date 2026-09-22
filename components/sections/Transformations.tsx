@@ -50,7 +50,7 @@ function TransformationCard({ item, index }: TransformationCardProps) {
 
   return (
     <article
-      className="group relative bg-salon-primary border border-white/10 rounded-2xl overflow-hidden hover:border-salon-gold/30 transition-all duration-500 hover:shadow-lg hover:shadow-salon-gold/5 animate-fade-in-up"
+      className="group relative bg-salon-primary border border-white/10 rounded-2xl overflow-hidden hover:border-salon-gold/30 transition-[border-color,box-shadow] duration-500 hover:shadow-lg hover:shadow-salon-gold/5 animate-fade-in-up"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <div className="relative aspect-[4/3]">
@@ -118,7 +118,7 @@ function TransformationCard({ item, index }: TransformationCardProps) {
           onTouchEnd={handleMouseUp}
         >
           <div
-            className="absolute top-0 bottom-0 bg-salon-gold rounded-full transition-all duration-100"
+            className="absolute top-0 bottom-0 bg-salon-gold rounded-full transition-[height] duration-100"
             style={{ width: `${sliderPosition}%` }}
           />
           <div

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Modal from "@/components/ui/Modal";
 import { salonConfig } from "@/config/salon.config";
 import { generateWhatsAppUrl, generateBookingMessage } from "@/lib/utils";
+import { track } from "@/lib/analytics";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -11,13 +12,24 @@ interface BookingModalProps {
   preselectedService?: string;
 }
 
-const TIME_SLOTS = [
-  "08:00", "08:30", "09:00", "09:30", "10:00", "10:30",
-  "11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
-  "14:00", "14:30", "15:00", "15:30", "16:00", "16:30",
-  "17:00", "17:30", "18:00", "18:30", "19:00", "19:30",
-  "20:00", "20:30", "21:00", "21:30", "22:00"
-];
+/** Time slots generated from config so booking hours always match the
+ *  published salon hours (single source of truth). */
+function buildTimeSlots(): string[] {
+  const { firstSlot, lastSlot, stepMinutes } = salonConfig.booking;
+  const toMinutes = (t: string): number => {
+    const parts = t.split(":");
+    return Number(parts[0]) * 60 + Number(parts[1]);
+  };
+  const format = (min: number): string =>
+    `${String(Math.floor(min / 60)).padStart(2, "0")}:${String(min % 60).padStart(2, "0")}`;
+  const slots: string[] = [];
+  for (let t = toMinutes(firstSlot); t <= toMinutes(lastSlot); t += stepMinutes) {
+    slots.push(format(t));
+  }
+  return slots;
+}
+
+const TIME_SLOTS = buildTimeSlots();
 
 export default function BookingModal({
   isOpen,
@@ -29,7 +41,6 @@ export default function BookingModal({
   const [service, setService] = useState(preselectedService);
   const [preferredDate, setPreferredDate] = useState("");
   const [preferredTime, setPreferredTime] = useState("");
-  const [callbackRequested, setCallbackRequested] = useState(false);
   const [errors, setErrors] = useState<{
     name?: string;
     phone?: string;
@@ -107,10 +118,10 @@ export default function BookingModal({
       phone.trim(),
       service,
       preferredDate || undefined,
-      preferredTime || undefined,
-      callbackRequested
+      preferredTime || undefined
     );
 
+    track("whatsapp_booking_request", { service, preferred_time: preferredTime || "none" });
     window.open(generateWhatsAppUrl(message), "_blank");
     setSubmitted(true);
   };
@@ -121,7 +132,6 @@ export default function BookingModal({
     setService(preselectedService);
     setPreferredDate("");
     setPreferredTime("");
-    setCallbackRequested(false);
     setErrors({});
     setTouched({});
     setSubmitted(false);
@@ -192,6 +202,7 @@ export default function BookingModal({
               name="name"
               autoComplete="name"
               inputMode="text"
+              maxLength={80}
               value={name}
               onChange={(e) => setName(e.target.value)}
               onBlur={() => handleBlur("name")}
@@ -215,6 +226,7 @@ export default function BookingModal({
               name="phone"
               autoComplete="tel"
               inputMode="tel"
+              maxLength={15}
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               onBlur={() => handleBlur("phone")}
@@ -269,7 +281,7 @@ export default function BookingModal({
               aria-describedby={touched.date && errors.date ? "date-error" : "date-hint"}
               className="w-full bg-salon-primary border border-white/20 px-4 py-3 text-salon-white focus:border-salon-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary transition-colors rounded-lg"
             />
-            <p id="date-hint" className="text-salon-muted/60 text-xs mt-1">We&apos;ll confirm availability for your selected date</p>
+            <p id="date-hint" className="text-salon-muted/60 text-xs mt-1">Preferred time — availability confirmed on WhatsApp</p>
             {touched.date && errors.date && (
               <p id="date-error" className="text-red-400 text-xs mt-1" role="alert">{errors.date}</p>
             )}
@@ -291,22 +303,10 @@ export default function BookingModal({
                 <option key={slot} value={slot}>{slot}</option>
               ))}
             </select>
-            <p className="text-salon-muted/60 text-xs mt-1">Salon hours: 08 AM - 10 PM daily</p>
-          </div>
-
-          <div className="flex items-start gap-3 p-3 bg-salon-primary/50 rounded-lg border border-white/10">
-            <input
-              id="modal-callback"
-              type="checkbox"
-              name="callback"
-              checked={callbackRequested}
-              onChange={(e) => setCallbackRequested(e.target.checked)}
-              className="mt-1 w-4 h-4 accent-salon-gold border-white/30 rounded focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary"
-            />
-            <label htmlFor="modal-callback" className="text-salon-white text-sm cursor-pointer leading-relaxed">
-              Request a callback instead of WhatsApp
-              <span className="text-salon-muted/60 block text-xs mt-0.5">We&apos;ll call you within 30 minutes during business hours</span>
-            </label>
+            <p className="text-salon-muted/60 text-xs mt-1">
+              Open daily {salonConfig.hoursSpec.opensLabel} – {salonConfig.hoursSpec.closesLabel} ·{" "}
+              {salonConfig.booking.availabilityNote}
+            </p>
           </div>
 
           <p className="text-salon-muted/60 text-xs text-center">

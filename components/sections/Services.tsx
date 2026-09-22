@@ -6,6 +6,7 @@ import { salonConfig } from "@/config/salon.config";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ServiceCard from "@/components/services/ServiceCard";
 import BookingModal from "@/components/services/BookingModal";
+import { track } from "@/lib/analytics";
 
 export default function Services() {
   const [bookingModal, setBookingModal] = useState<{
@@ -18,6 +19,7 @@ export default function Services() {
     .slice(0, 6);
 
   const handleBookService = (serviceName: string) => {
+    track("service_booking_click", { service: serviceName, location: "home" });
     setBookingModal({ isOpen: true, service: serviceName });
   };
 
@@ -45,9 +47,10 @@ export default function Services() {
         <div className="mt-10 text-center">
           <Link
             href="/services"
+            onClick={() => track("view_all_services_click", { location: "home_services" })}
             className="inline-flex items-center justify-center gap-2 border border-salon-gold px-7 py-3.5 text-sm font-medium tracking-wide text-salon-gold transition-colors hover:bg-salon-gold hover:text-salon-primary focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-surface"
           >
-            Explore All 35 Services
+            Explore All {salonConfig.services.length} Services
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

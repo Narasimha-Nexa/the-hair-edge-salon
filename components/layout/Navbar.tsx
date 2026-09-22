@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { salonConfig } from "@/config/salon.config";
 import BookingModal from "@/components/services/BookingModal";
+import { track } from "@/lib/analytics";
 
 const navItems = [
   { label: "Home", href: "/#home" },
@@ -26,6 +27,7 @@ export default function Navbar() {
 
   const handleBookClick = () => {
     setIsOpen(false);
+    track("booking_modal_open", { location: "navbar" });
     setBookingOpen(true);
   };
 
@@ -43,12 +45,18 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow] duration-300 ${
         showBackground
           ? "bg-salon-primary/95 backdrop-blur-sm border-b border-white/10 shadow-lg"
           : "bg-gradient-to-b from-black/75 via-black/45 to-transparent"
       }`}
     >
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-salon-gold focus:text-salon-primary focus:px-4 focus:py-2.5 focus:text-sm focus:font-medium focus:rounded focus:outline-none"
+      >
+        Skip to content
+      </a>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <a href="/#home" className="flex items-center gap-2 shrink-0">
@@ -62,7 +70,7 @@ export default function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm tracking-wider text-salon-muted hover:text-salon-gold transition-colors"
+                className="text-sm tracking-wider text-salon-muted hover:text-salon-gold transition-colors py-3"
               >
                 {item.label}
               </a>

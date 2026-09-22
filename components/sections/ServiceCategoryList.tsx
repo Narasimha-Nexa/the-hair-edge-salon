@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { salonConfig } from "@/config/salon.config";
+import { CategoryIcon } from "@/components/ui/Icon";
 import type { ServiceCategory } from "@/types/salon";
 
 interface ServiceCategoryListProps {
@@ -20,7 +21,7 @@ export default function ServiceCategoryList({ categories }: ServiceCategoryListP
           style={{ animationDelay: `${catIndex * 100}ms` }}
         >
           <div className="flex items-center gap-4 mb-8 pb-4 border-b border-white/10">
-            <span className="text-3xl" aria-hidden="true">{category.icon}</span>
+            <CategoryIcon id={category.id} className="w-8 h-8 text-salon-gold shrink-0" />
             <div>
               <h2 className="font-heading text-2xl md:text-3xl text-salon-white">
                 {category.name}
@@ -36,7 +37,7 @@ export default function ServiceCategoryList({ categories }: ServiceCategoryListP
               <Link
                 key={service.id}
                 href={`/services/${service.id}`}
-                className="group relative bg-salon-primary border border-white/10 rounded-2xl overflow-hidden hover:border-salon-gold/50 transition-all duration-500 hover:shadow-lg hover:shadow-salon-gold/10 hover:-translate-y-1"
+                className="group relative bg-salon-primary border border-white/10 rounded-2xl overflow-hidden hover:border-salon-gold/50 transition-[border-color,transform,box-shadow] duration-500 hover:shadow-lg hover:shadow-salon-gold/10 hover:-translate-y-1"
                 style={{ animationDelay: `${svcIndex * 50}ms` } as React.CSSProperties}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -62,16 +63,16 @@ export default function ServiceCategoryList({ categories }: ServiceCategoryListP
                   <p className="text-salon-muted text-sm mb-4 leading-relaxed line-clamp-2">
                     {service.description}
                   </p>
-                  <div className="flex items-center gap-4 mb-4 text-sm" aria-hidden="true">
+                  <p className="flex flex-wrap items-center gap-3 mb-4 text-xs sm:text-sm">
                     {service.duration && (
-                      <span className="text-salon-muted/70 flex items-center gap-1">
+                      <span className="text-salon-muted/70 inline-flex items-center gap-1">
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         {service.duration}
                       </span>
                     )}
-                  </div>
+                  </p>
                   <span className="inline-flex items-center gap-2 text-salon-gold text-sm font-medium hover:text-salon-gold-light transition-colors">
                     View Details
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

@@ -7,7 +7,7 @@ import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-salon-primary">
+    <main id="main-content" className="min-h-screen bg-salon-primary">
       <Navbar />
       <div className="flex-1 flex items-center justify-center px-4 py-28 md:py-32">
         <div className="text-center max-w-md mx-auto animate-fade-in-up">

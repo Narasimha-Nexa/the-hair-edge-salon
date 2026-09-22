@@ -36,7 +36,7 @@ interface TeamCardProps {
 function TeamCard({ member, index }: TeamCardProps) {
   return (
     <article
-      className="group bg-salon-primary border border-white/10 rounded-2xl overflow-hidden hover:border-salon-gold/30 transition-all duration-500 hover:shadow-lg hover:shadow-salon-gold/5 hover:-translate-y-1 animate-fade-in-up"
+      className="group bg-salon-primary border border-white/10 rounded-2xl overflow-hidden hover:border-salon-gold/30 transition-[border-color,transform,box-shadow] duration-500 hover:shadow-lg hover:shadow-salon-gold/5 hover:-translate-y-1 animate-fade-in-up"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <div className="relative aspect-square overflow-hidden">
@@ -63,7 +63,7 @@ function TeamCard({ member, index }: TeamCardProps) {
             href={member.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute bottom-4 right-4 w-10 h-10 bg-salon-gold text-salon-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-salon-gold-light focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary"
+            className="absolute bottom-4 right-4 w-10 h-10 bg-salon-gold text-salon-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-[opacity,transform,background-color] duration-300 hover:bg-salon-gold-light focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary"
             aria-label={`${member.name} on Instagram`}
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

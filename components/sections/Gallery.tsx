@@ -133,7 +133,7 @@ export default function Gallery() {
               <button
                 key={index}
                 onClick={(e) => { e.stopPropagation(); setLightboxIndex(index); }}
-                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
                   index === lightboxIndex
                     ? "bg-salon-gold"
                     : "bg-white/30 hover:bg-white/50"

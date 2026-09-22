@@ -41,7 +41,26 @@ export const salonConfig = {
     reviewsUrl: "",
   },
 
-  // Opening hours mirror the Google Business Profile (8:00 AM - 11:30 PM daily).
+  // Single source of truth for opening hours (mirrors Google Business
+  // Profile). Structured data, booking time slots and visible copy all read
+  // from these values so they can never drift apart.
+  hoursSpec: {
+    opens: "08:00",
+    closes: "23:30",
+    opensLabel: "8:00 AM",
+    closesLabel: "11:30 PM",
+    label: "08 AM - 11:30 PM",
+  },
+
+  // Booking preferences: last start time leaves room for a service before
+  // close. Availability itself is always confirmed on WhatsApp.
+  booking: {
+    firstSlot: "08:00",
+    lastSlot: "22:30",
+    stepMinutes: 30,
+    availabilityNote: "Preferred time — availability confirmed on WhatsApp.",
+  },
+
   hours: {
     monday: "08 AM - 11:30 PM",
     tuesday: "08 AM - 11:30 PM",

@@ -7,6 +7,7 @@ import {
   generateDirectionsUrl,
 } from "@/lib/utils";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { track } from "@/lib/analytics";
 
 export default function Contact() {
   if (!salonConfig.features.contact) return null;
@@ -32,6 +33,17 @@ export default function Contact() {
               <p className="text-salon-muted leading-relaxed">
                 {salonConfig.address.full}
               </p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                <span className="text-xs text-salon-gold border border-salon-gold/40 rounded-full px-3 py-1.5">
+                  Open 7 days
+                </span>
+                <span className="text-xs text-salon-gold border border-salon-gold/40 rounded-full px-3 py-1.5">
+                  Near Hitech City Metro
+                </span>
+                <span className="text-xs text-salon-gold border border-salon-gold/40 rounded-full px-3 py-1.5">
+                  Parking nearby
+                </span>
+              </div>
             </div>
 
             {salonConfig.contact.phone && (
@@ -100,17 +112,18 @@ export default function Contact() {
               {salonConfig.contact.phone && (
                 <a
                   href={generateCallUrl()}
-                  className="bg-salon-gold text-salon-primary px-8 py-3 text-sm font-medium tracking-wider text-center hover:bg-salon-gold-light transition-colors"
+                  onClick={() => track("phone_click", { location: "contact" })}
+                  className="bg-salon-gold text-salon-primary px-8 py-4 sm:py-3 text-sm font-medium tracking-wider text-center hover:bg-salon-gold-light transition-colors"
                 >
                   CALL NOW
                 </a>
-              )}
-              <a
-                href={generateDirectionsUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-salon-gold text-salon-gold px-8 py-3 text-sm tracking-wider text-center hover:bg-salon-gold hover:text-salon-primary transition-colors"
-              >
+              )}                <a
+                  href={generateDirectionsUrl()}
+                  onClick={() => track("directions_click", { location: "contact" })}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-salon-gold text-salon-gold px-8 py-4 sm:py-3 text-sm tracking-wider text-center hover:bg-salon-gold hover:text-salon-primary transition-colors"
+                >
                 {salonConfig.cta.directions.toUpperCase()}
               </a>
               {salonConfig.contact.whatsapp && (
@@ -120,7 +133,8 @@ export default function Contact() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border border-salon-gold text-salon-gold px-8 py-3 text-sm tracking-wider text-center hover:bg-salon-gold hover:text-salon-primary transition-colors"
+                  onClick={() => track("whatsapp_click", { location: "contact" })}
+                  className="border border-salon-gold text-salon-gold px-8 py-4 sm:py-3 text-sm tracking-wider text-center hover:bg-salon-gold hover:text-salon-primary transition-colors"
                 >
                   {salonConfig.cta.primary.toUpperCase()}
                 </a>

@@ -71,7 +71,7 @@ export default function Menu() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title="Salon Menu"
-        description="Complete service menu with pricing"
+        description="Complete service menu"
       >
         {salonConfig.assets.menu ? (
           <div className="relative w-[90vw] max-w-4xl h-[85vh]">

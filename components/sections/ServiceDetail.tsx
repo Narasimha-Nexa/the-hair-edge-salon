@@ -6,6 +6,7 @@ import { generateWhatsAppUrl, generateCallUrl } from "@/lib/utils";
 import { serializeJsonLd } from "@/lib/jsonld";
 import BookingModal from "@/components/services/BookingModal";
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 import type { Service, ServiceCategory } from "@/types/salon";
 
 interface ServiceDetailProps {
@@ -20,6 +21,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
   const [showFAQ, setShowFAQ] = useState(false);
 
   const handleBook = () => {
+    track("service_booking_click", { service: service.name, location: "detail" });
     setBookingModal(true);
   };
 
@@ -125,11 +127,11 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="mb-8" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-sm text-salon-muted">
-              <li><a href="/" className="hover:text-salon-gold transition-colors">Home</a></li>
+              <li><a href="/" className="inline-block py-1.5 hover:text-salon-gold transition-colors">Home</a></li>
               <li className="text-salon-muted/50">/</li>
-              <li><a href="/services" className="hover:text-salon-gold transition-colors">Services</a></li>
+              <li><a href="/services" className="inline-block py-1.5 hover:text-salon-gold transition-colors">Services</a></li>
               <li className="text-salon-muted/50">/</li>
-              <li><a href={`/services#${category?.id}`} className="hover:text-salon-gold transition-colors">{category?.name}</a></li>
+              <li><a href={`/services#${category?.id}`} className="inline-block py-1.5 hover:text-salon-gold transition-colors">{category?.name}</a></li>
               <li className="text-salon-muted/50">/</li>
               <li className="text-salon-white font-medium" aria-current="page">{service.name}</li>
             </ol>
@@ -180,6 +182,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
               <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-white/10">
                 <button
                   onClick={handleBook}
+                  aria-label={`Book ${service.name} via WhatsApp`}
                   className="flex-1 bg-salon-gold text-salon-primary py-4 px-6 rounded-lg font-medium tracking-wider hover:bg-salon-gold-light transition-colors focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -189,6 +192,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                 </button>
                 <a
                   href={generateCallUrl()}
+                  onClick={() => track("phone_click", { location: "detail" })}
                   className="flex-1 border border-salon-gold text-salon-gold py-4 px-6 rounded-lg font-medium tracking-wider hover:bg-salon-gold hover:text-salon-primary transition-colors focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -235,7 +239,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                 <div className="space-y-4" id="faq-section">
                   {faqs.map((faq, index) => (
                     <details key={index} className="group bg-salon-surface border border-white/10 rounded-xl p-5">
-                      <summary className="flex items-center justify-between cursor-pointer text-salon-white font-medium list-none py-1.5">
+                      <                      summary className="flex items-center justify-between cursor-pointer text-salon-white font-medium list-none py-2.5">
                         {faq.q}
                         <svg className="w-5 h-5 text-salon-gold transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -259,15 +263,15 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
                     "4.6★ Google rating with 1,150+ reviews",
-                    "8+ years of expertise in Madhapur",
-                    "Certified stylists with international training",
+                    "Experienced team trusted in Madhapur",
+                    "Skilled, professional stylists",
                     "Premium products: L'Oréal, Wella, Olaplex, Kérastase",
-                    "Strict hygiene & sterilization protocols",
-                    "Transparent pricing - no hidden charges",
+                    "Sanitised tools & hygienic setup",
+                    "Clear quote confirmed before we begin",
                     "Convenient WhatsApp booking & confirmation",
                     "Located near Hitech City Metro Station",
-                    "Ample parking available",
-                    "Open daily till 11:30 PM, including weekends",
+                    "Parking available near the salon",
+                    `Open daily till ${salonConfig.hoursSpec.closesLabel}, including weekends`,
                   ].map((reason, index) => (
                     <div key={index} className="flex items-start gap-3 p-4 bg-salon-surface border border-white/10 rounded-xl">
                       <div className="w-8 h-8 bg-salon-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -299,6 +303,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                     </button>
                     <a
                       href={generateCallUrl()}
+                      onClick={() => track("phone_click", { location: "detail_sidebar" })}
                       className="w-full border border-salon-gold text-salon-gold py-3.5 px-4 rounded-lg font-medium tracking-wider hover:bg-salon-gold hover:text-salon-primary transition-colors focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary flex items-center justify-center gap-2"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -310,6 +315,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                       href={generateWhatsAppUrl(`Hello ${salonConfig.business.name}, I want to book ${service.name}. Please confirm availability.`)}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => track("whatsapp_click", { location: "detail_sidebar" })}
                       className="w-full bg-[#25D366] text-white py-3.5 px-4 rounded-lg font-medium tracking-wider hover:bg-[#20BD5A] transition-colors focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary flex items-center justify-center gap-2"
                     >
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -334,12 +340,13 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                       <svg className="w-5 h-5 text-salon-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span>Daily: 8:00 AM - 11:30 PM</span>
+                      <span>Daily: {salonConfig.hoursSpec.opensLabel} – {salonConfig.hoursSpec.closesLabel}</span>
                     </p>
                     <a
                       href={salonConfig.google.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => track("directions_click", { location: "detail_sidebar" })}
                       className="inline-flex items-center gap-2 text-salon-gold hover:text-salon-gold-light transition-colors mt-2"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

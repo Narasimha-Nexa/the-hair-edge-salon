@@ -130,8 +130,8 @@ export default function RootLayout({
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        opens: "08:00",
-        closes: "23:30",
+        opens: salonConfig.hoursSpec.opens,
+        closes: salonConfig.hoursSpec.closes,
       },
     ],
     currenciesAccepted: "INR",
@@ -225,7 +225,7 @@ export default function RootLayout({
         name: "What are the opening hours of Hair Edge Salon Madhapur?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Hair Edge Unisex Salon Madhapur is open daily from 8:00 AM to 11:30 PM, including weekends and public holidays.",
+          text: `Hair Edge Unisex Salon Madhapur is open daily from ${salonConfig.hoursSpec.opensLabel} to ${salonConfig.hoursSpec.closesLabel}, including weekends and public holidays.`,
         },
       },
       {
@@ -257,7 +257,7 @@ export default function RootLayout({
         name: "How much does a hair cut cost at Hair Edge Salon Madhapur?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Hair cut pricing depends on hair length, style complexity, and stylist level. Contact us on WhatsApp for a personalized quote — the exact cost is confirmed before the service begins.",
+          text: "Hair cut pricing depends on hair length, style complexity, and stylist level. The exact cost is confirmed with you on WhatsApp before the service begins.",
         },
       },
       {
@@ -297,6 +297,19 @@ export default function RootLayout({
         <link rel="preconnect" href="https://lh3.googleusercontent.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',${JSON.stringify(process.env.NEXT_PUBLIC_GA_ID)});`,
+              }}
+            />
+          </>
+        )}
       </head>
       <body className="font-body antialiased">{children}</body>
     </html>

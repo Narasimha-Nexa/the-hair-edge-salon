@@ -8,6 +8,8 @@ import {
   generateReviewsUrl,
   generateWhatsAppUrl,
 } from "@/lib/utils";
+import { track } from "@/lib/analytics";
+import { IconStar } from "@/components/ui/Icon";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Loading from "@/components/ui/Loading";
 import ErrorState from "@/components/ui/ErrorState";
@@ -35,12 +37,10 @@ function Stars({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map((star) => (
         <span
           key={star}
-          className={`text-sm ${
-            star <= Math.round(rating) ? "text-salon-gold" : "text-gray-600"
-          }`}
+          className={star <= Math.round(rating) ? "text-salon-gold" : "text-gray-600"}
           aria-hidden="true"
         >
-          ★
+          <IconStar className="w-4 h-4" />
         </span>
       ))}
     </div>
@@ -125,6 +125,7 @@ Thank you.
 Source: Website Review Form`;
 
     window.open(generateWhatsAppUrl(message), "_blank");
+    track("whatsapp_click", { location: "review_form" });
     setSent(true);
   };
 
@@ -308,11 +309,19 @@ export default function Reviews() {
         {loading && <Loading text="Loading Google reviews..." />}
 
         {error && (
-          <ErrorState
-            message="Google reviews are temporarily unavailable."
-            actionLabel="View on Google Maps"
-            actionHref={salonConfig.google.mapsUrl}
-          />
+          <div className="text-center mb-12">
+            <p className="font-heading text-4xl text-salon-white">
+              4.6 <span className="text-salon-gold text-2xl">★</span>
+            </p>
+            <p className="text-salon-muted text-sm mt-1">
+              Based on 1,152 Google reviews
+            </p>
+            <ErrorState
+              message="Live reviews are temporarily unavailable."
+              actionLabel="View Reviews on Google"
+              actionHref={salonConfig.google.mapsUrl}
+            />
+          </div>
         )}
 
         {!loading && !error && data && (
@@ -336,7 +345,8 @@ export default function Reviews() {
                 href={generateWriteReviewUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-salon-gold text-salon-primary px-8 py-3 text-sm font-medium tracking-wider hover:bg-salon-gold-light transition-colors"
+                onClick={() => track("google_review_click", { action: "write" })}
+                className="bg-salon-gold text-salon-primary px-8 py-4 sm:py-3 text-sm font-medium tracking-wider hover:bg-salon-gold-light transition-colors"
               >
                 WRITE A REVIEW ON GOOGLE
               </a>
@@ -344,7 +354,8 @@ export default function Reviews() {
                 href={generateReviewsUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-salon-gold text-salon-gold px-8 py-3 text-sm tracking-wider hover:bg-salon-gold hover:text-salon-primary transition-colors"
+                onClick={() => track("google_review_click", { action: "view_all" })}
+                className="border border-salon-gold text-salon-gold px-8 py-4 sm:py-3 text-sm tracking-wider hover:bg-salon-gold hover:text-salon-primary transition-colors"
               >
                 VIEW ALL GOOGLE REVIEWS
               </a>

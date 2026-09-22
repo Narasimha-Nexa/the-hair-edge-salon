@@ -13,7 +13,7 @@ interface ErrorBoundaryProps {
 
 export default function ErrorBoundary({ error, reset }: ErrorBoundaryProps) {
   return (
-    <main className="min-h-screen bg-salon-primary flex flex-col">
+    <main id="main-content" className="min-h-screen bg-salon-primary flex flex-col">
       <Navbar />
       <div className="flex-1 flex items-center justify-center px-4 py-20">
         <div className="text-center max-w-md mx-auto animate-fade-in-up">

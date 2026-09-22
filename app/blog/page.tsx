@@ -38,7 +38,7 @@ const breadcrumbJsonLd = {
 
 export default function BlogIndexPage() {
   return (
-    <main className="min-h-screen bg-salon-primary">
+    <main id="main-content" className="min-h-screen bg-salon-primary">
       <Navbar />
       <script
         type="application/ld+json"
@@ -59,8 +59,7 @@ export default function BlogIndexPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post, index) => (
               <article
-                key={post.slug}
-                className="group bg-salon-primary border border-white/10 rounded-2xl overflow-hidden hover:border-salon-gold/50 transition-all duration-500 hover:shadow-lg hover:shadow-salon-gold/10 animate-fade-in-up"
+                key={post.slug}                 className="group bg-salon-primary border border-white/10 rounded-2xl overflow-hidden hover:border-salon-gold/50 transition-[border-color,box-shadow] duration-500 hover:shadow-lg hover:shadow-salon-gold/10 animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <Link

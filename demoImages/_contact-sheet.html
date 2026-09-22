@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Hair Edge — Demo Screenshots</title>
+<style>
+  body { margin: 0; background: #111; color: #eee; font: 14px/1.5 system-ui, sans-serif; }
+  h1 { margin: 24px; font-size: 20px; color: #c9a227; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 0 24px 40px; }
+  figure { margin: 0; background: #1b1b1b; border: 1px solid #333; border-radius: 8px; overflow: hidden; }
+  figure img { width: 100%; display: block; }
+  figcaption { padding: 8px 10px; font-size: 13px; }
+</style>
+</head>
+<body>
+  <h1>Hair Edge Unisex Salon — Client Demo Screenshots (Desktop · Mobile Portrait · Mobile Landscape)</h1>
+  <div class="grid" id="grid"></div>
+  <script>
+    const files = [
+      "01-desktop-home.png", "02-desktop-services.png", "03-desktop-gallery.png",
+      "04-desktop-reviews.png", "05-desktop-service-detail.png", "06-desktop-booking-modal.png",
+      "07-desktop-blog.png", "08-mobile-portrait-home.png", "09-mobile-portrait-services.png",
+      "10-mobile-portrait-service-detail.png", "11-mobile-portrait-booking-modal.png",
+      "12-mobile-portrait-reviews.png", "13-mobile-landscape-home.png",
+      "14-mobile-landscape-services.png", "15-mobile-landscape-service-detail.png"
+    ];
+    const grid = document.getElementById("grid");
+    for (const f of files) {
+      const fig = document.createElement("figure");
+      const img = document.createElement("img");
+      img.src = f; img.loading = "lazy";
+      const cap = document.createElement("figcaption");
+      cap.textContent = f;
+      fig.append(img, cap);
+      grid.append(fig);
+    }
+  </script>
+</body>
+</html>

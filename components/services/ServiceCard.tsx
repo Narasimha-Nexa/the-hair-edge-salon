@@ -13,13 +13,13 @@ interface ServiceCardProps {
 }
 
 /**
- * Mobile-first service card (2-column phone grid → 2-col at md → 3-col at lg).
+ * Mobile-first service card (2-col phone grid → 2-col at md → 3-col at lg).
  *
- * Layout: photo (badge + price chip only) → title below the image (2-line
- * clamp, never over the photo) → duration → description (sm+) → single-line
- * "Book Now" CTA. Titles and buttons align across every row.
- * Tapping the card or the CTA opens the booking modal; the title links to the
- * service detail page.
+ * Layout: photo (badge only) → title below the image (2-line clamp) →
+ * duration value row → description → single-line "Book Now"
+ * CTA. Only the explicit controls are interactive: the title links to the
+ * detail page and the button opens the booking modal (the card itself is
+ * not a click target, so keyboard and pointer behaviour stay predictable).
  */
 export default function ServiceCard({
   service,
@@ -34,8 +34,7 @@ export default function ServiceCard({
   return (
     <article
       style={{ "--card-accent": accent } as CSSProperties}
-      onClick={() => onBook(service.name)}
-      className="group flex flex-col bg-salon-primary border border-white/10 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:border-[var(--card-accent)]/60 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.45)] focus-within:border-[var(--card-accent)]/70"
+      className="group flex flex-col bg-salon-primary border border-white/10 rounded-2xl overflow-hidden transition-[border-color,transform,box-shadow] duration-500 hover:border-[var(--card-accent)]/60 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.45)] focus-within:border-[var(--card-accent)]/70"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
@@ -57,7 +56,6 @@ export default function ServiceCard({
         <h3 className="font-heading text-[15px] sm:text-base md:text-lg leading-snug text-salon-white mb-1.5 line-clamp-2 min-h-[2.75em]">
           <Link
             href={`/services/${service.id}`}
-            onClick={(e) => e.stopPropagation()}
             className="block hover:text-salon-gold transition-colors rounded focus-visible:ring-2 focus-visible:ring-[var(--card-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary"
           >
             {service.name}
@@ -65,37 +63,18 @@ export default function ServiceCard({
         </h3>
 
         {service.duration && (
-          <span className="inline-flex items-center gap-1 text-salon-muted text-[11px] sm:text-xs mb-2">
-            <svg
-              className="w-3.5 h-3.5 shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            {service.duration}
-          </span>
+          <p className="text-[11px] sm:text-xs mb-2 text-salon-muted">{service.duration}</p>
         )}
 
-        <p className="hidden sm:block text-salon-muted text-xs leading-relaxed line-clamp-2 mb-3">
+        <p className="block text-salon-muted text-xs leading-relaxed line-clamp-2 mb-3">
           {service.description}
         </p>
 
         <button
           type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onBook(service.name);
-          }}
+          onClick={() => onBook(service.name)}
           aria-label={`Book ${service.name} via WhatsApp`}
-          className="mt-auto w-full bg-[var(--card-accent)] text-salon-primary py-2.5 sm:py-3 px-2 text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap hover:brightness-110 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-1.5 focus-visible:ring-2 focus-visible:ring-[var(--card-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary"
+          className="mt-auto w-full bg-[var(--card-accent)] text-salon-primary py-2.5 sm:py-3 px-2 text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap hover:brightness-110 active:scale-[0.98] transition-[filter,transform] duration-300 flex items-center justify-center gap-1.5 focus-visible:ring-2 focus-visible:ring-[var(--card-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary"
         >
           <svg
             className="w-4 h-4 shrink-0"

@@ -4,7 +4,7 @@ import { serializeJsonLd } from "@/lib/jsonld";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
-import ServiceCategoryList from "@/components/sections/ServiceCategoryList";
+import ServicesCatalog from "@/components/services/ServicesCatalog";
 
 const totalCategories = salonConfig.categories.length;
 const totalServices = salonConfig.categories.reduce(
@@ -15,12 +15,12 @@ const totalServices = salonConfig.categories.reduce(
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hairedgesalon.in";
 
 export const metadata: Metadata = {
-  title: "Salon Services & Prices",
-  description: `Explore all ${totalServices} salon services & prices in Madhapur, Hyderabad - hair cut, colour, keratin, rebonding, beard grooming, waxing, facial, bridal makeup and more. Book via WhatsApp at Hair Edge Unisex Salon.`,
+  title: "Salon Services",
+  description: `Explore all ${totalServices} salon services in Madhapur, Hyderabad - hair cut, colour, keratin, rebonding, beard grooming, waxing, facial, bridal makeup and more. Book via WhatsApp at Hair Edge Unisex Salon.`,
   alternates: { canonical: "/services" },
   openGraph: {
     url: "/services",
-    description: `Explore all ${totalServices} salon services & prices in Madhapur, Hyderabad. Hair cut, colour, keratin, beard grooming, waxing, facial, bridal makeup and more.`,
+    description: `Explore all ${totalServices} salon services in Madhapur, Hyderabad. Hair cut, colour, keratin, beard grooming, waxing, facial, bridal makeup and more.`,
   },
 };
 
@@ -35,7 +35,7 @@ const breadcrumbJsonLd = {
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-salon-primary">
+    <main id="main-content" className="min-h-screen bg-salon-primary">
       <Navbar />
       <script
         type="application/ld+json"
@@ -48,10 +48,10 @@ export default function ServicesPage() {
               Our Complete <span className="text-salon-gold">Service Menu</span>
             </h1>
             <p className="text-salon-muted text-lg md:text-xl max-w-2xl mx-auto">
-              {totalServices} professional salon services across {totalCategories} categories. Transparent pricing, expert stylists, premium products.
+              {totalServices} professional salon services across {totalCategories} categories. Expert stylists, premium products, thoughtful care.
             </p>
           </div>
-          <ServiceCategoryList categories={salonConfig.categories} />
+          <ServicesCatalog categories={salonConfig.categories} />
         </div>
       </section>
       <Footer />

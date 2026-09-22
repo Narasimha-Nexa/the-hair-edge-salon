@@ -109,7 +109,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-salon-primary">
+    <main id="main-content" className="min-h-screen bg-salon-primary">
       <Navbar />
       <script
         type="application/ld+json"

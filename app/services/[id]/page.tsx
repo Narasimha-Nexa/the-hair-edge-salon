@@ -80,7 +80,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   );
 
   return (
-    <main className="min-h-screen bg-salon-primary pt-16 md:pt-20">
+    <main id="main-content" className="min-h-screen bg-salon-primary pt-16 md:pt-20">
       <Navbar />
       <ServiceDetail service={service} category={category} />
       <Footer />
