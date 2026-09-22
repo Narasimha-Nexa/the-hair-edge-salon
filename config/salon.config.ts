@@ -10,8 +10,12 @@ export const salonConfig = {
   },
 
   contact: {
-    phone: "+916304884778",
+    // Public phone matches the Google Business Profile exactly (local SEO NAP consistency).
+    phone: "+918985310570",
+    phoneDisplay: "+91 89853 10570",
+    // Separate WhatsApp line used for booking (wa.me links).
     whatsapp: "+916304884778",
+    whatsappDisplay: "+91 63048 84778",
     email: "",
   },
 
@@ -37,14 +41,15 @@ export const salonConfig = {
     reviewsUrl: "",
   },
 
+  // Opening hours mirror the Google Business Profile (8:00 AM - 11:30 PM daily).
   hours: {
-    monday: "08 AM - 10 PM",
-    tuesday: "08 AM - 10 PM",
-    wednesday: "08 AM - 10 PM",
-    thursday: "08 AM - 10 PM",
-    friday: "08 AM - 10 PM",
-    saturday: "08 AM - 10 PM",
-    sunday: "08 AM - 10 PM",
+    monday: "08 AM - 11:30 PM",
+    tuesday: "08 AM - 11:30 PM",
+    wednesday: "08 AM - 11:30 PM",
+    thursday: "08 AM - 11:30 PM",
+    friday: "08 AM - 11:30 PM",
+    saturday: "08 AM - 11:30 PM",
+    sunday: "08 AM - 11:30 PM",
   },
 
   social: {
@@ -64,7 +69,7 @@ export const salonConfig = {
 
   assets: {
     logo: "",
-    hero: "/images/services/hair-styling.avif",
+    hero: "/images/services/hair-rebonding.avif",
     menu: "/images/menu.png",
     fallbackService: "/images/services/hair-styling.avif",
   },

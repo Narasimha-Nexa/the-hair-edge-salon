@@ -33,6 +33,7 @@ export default function Menu() {
                   src={salonConfig.assets.menu}
                   alt="Salon Menu"
                   fill
+                  quality={90}
                   sizes="(max-width: 640px) 100vw, 576px"
                   className="object-contain p-2 group-hover:scale-[1.03] transition-transform duration-500 rounded-lg"
                 />
@@ -78,6 +79,8 @@ export default function Menu() {
               src={salonConfig.assets.menu}
               alt="Salon Menu - Full View"
               fill
+              sizes="90vw"
+              quality={90}
               className="object-contain"
             />
           </div>

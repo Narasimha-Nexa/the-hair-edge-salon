@@ -9,7 +9,12 @@
 
 # next.js
 /.next/
+/.next-dev-*.log
 /out/
+
+# dev server logs (regenerated on every run)
+dev-server.log
+dev-server.log.err
 
 # production
 /build

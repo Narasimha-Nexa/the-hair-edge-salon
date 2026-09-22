@@ -6,12 +6,12 @@ import { salonConfig } from "@/config/salon.config";
 import BookingModal from "@/components/services/BookingModal";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Menu", href: "#menu" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Menu", href: "/#menu" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -51,7 +51,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="#home" className="flex items-center gap-2 shrink-0">
+          <a href="/#home" className="flex items-center gap-2 shrink-0">
             <span className="font-heading text-xl md:text-2xl text-salon-white whitespace-nowrap">
               THE HAIR EDGE
             </span>
@@ -78,7 +78,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-salon-white p-2"
+            className="md:hidden text-salon-white p-2.5"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >

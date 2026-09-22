@@ -65,6 +65,7 @@ export default function Gallery() {
                   alt={`Salon gallery image ${index + 1}`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  quality={85}
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -116,12 +117,14 @@ export default function Gallery() {
           </button>
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-5xl max-h-[90vh] w-full"
+            className="relative h-[72vh] max-h-[calc(100vw-2rem)] w-full max-w-5xl"
           >
             <Image
               src={images[lightboxIndex]}
               alt={`Salon gallery image ${lightboxIndex + 1}`}
               fill
+              sizes="95vw"
+              quality={90}
               className="object-contain"
             />
           </div>

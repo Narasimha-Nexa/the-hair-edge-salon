@@ -1,12 +1,14 @@
 import { Metadata } from "next";
 import { salonConfig } from "@/config/salon.config";
+import { generateCallUrl } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 
 export const metadata: Metadata = {
-  title: `Privacy Policy | ${salonConfig.business.name}`,
-  description: "Privacy Policy for Hair Edge Unisex Salon Madhapur. Learn how we collect, use, and protect your personal information.",
+  title: "Privacy Policy",
+  description: "Privacy Policy for Hair Edge Unisex Salon Madhapur, Hyderabad. Learn how we collect, use, and protect your personal information when you book via WhatsApp.",
+  alternates: { canonical: "/privacy" },
   robots: { index: true, follow: true },
 };
 
@@ -88,7 +90,7 @@ export default function PrivacyPolicy() {
                 <li>Data portability</li>
               </ul>
               <p className="text-salon-muted leading-relaxed mt-4">
-                To exercise these rights, contact us at <a href={salonConfig.contact.whatsapp ? `https://wa.me/${salonConfig.contact.whatsapp.replace(/[^0-9]/g, "")}` : "#"} className="text-salon-gold hover:text-salon-gold-light">WhatsApp</a> or call <a href="tel:+918985310570" className="text-salon-gold hover:text-salon-gold-light">+91 89853 10570</a>.
+                To exercise these rights, contact us at <a href={salonConfig.contact.whatsapp ? `https://wa.me/${salonConfig.contact.whatsapp.replace(/[^0-9]/g, "")}` : "#"} className="text-salon-gold hover:text-salon-gold-light">WhatsApp</a> or call <a href={generateCallUrl()} className="text-salon-gold hover:text-salon-gold-light">{salonConfig.contact.phoneDisplay}</a>.
               </p>
             </section>
 
@@ -135,8 +137,8 @@ export default function PrivacyPolicy() {
               <address className="not-italic text-salon-muted leading-relaxed mt-4 space-y-2">
                 <p><strong>{salonConfig.business.name}</strong></p>
                 <p>{salonConfig.address.full}</p>
-                <p>Phone: <a href="tel:+918985310570" className="text-salon-gold hover:text-salon-gold-light">+91 89853 10570</a></p>
-                <p>WhatsApp: <a href={salonConfig.contact.whatsapp ? `https://wa.me/${salonConfig.contact.whatsapp.replace(/[^0-9]/g, "")}` : "#"} className="text-salon-gold hover:text-salon-gold-light">+91 63048 84778</a></p>
+                <p>Phone: <a href={generateCallUrl()} className="text-salon-gold hover:text-salon-gold-light">{salonConfig.contact.phoneDisplay}</a></p>
+                <p>WhatsApp: <a href={salonConfig.contact.whatsapp ? `https://wa.me/${salonConfig.contact.whatsapp.replace(/[^0-9]/g, "")}` : "#"} className="text-salon-gold hover:text-salon-gold-light">{salonConfig.contact.whatsappDisplay}</a></p>
               </address>
             </section>
           </div>

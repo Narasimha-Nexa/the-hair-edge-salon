@@ -6,12 +6,12 @@ import {
 } from "@/lib/utils";
 
 const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Menu", href: "#menu" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Menu", href: "/#menu" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Footer() {
@@ -37,7 +37,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-salon-muted text-sm hover:text-salon-gold transition-colors"
+                    className="text-salon-muted text-sm hover:text-salon-gold transition-colors inline-block py-1"
                   >
                     {link.label}
                   </a>
@@ -70,7 +70,7 @@ export default function Footer() {
                         d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                       />
                     </svg>
-                    {salonConfig.contact.phone}
+                    {salonConfig.contact.phoneDisplay}
                   </a>
                 </li>
               )}
@@ -157,7 +157,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 md:pb-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-salon-muted text-xs">
               © {new Date().getFullYear()} {salonConfig.business.name}. All
@@ -166,13 +166,13 @@ export default function Footer() {
             <div className="flex items-center gap-6">
               <a
                 href="/privacy"
-                className="text-salon-muted text-xs hover:text-salon-gold transition-colors"
+                className="text-salon-muted text-xs hover:text-salon-gold transition-colors inline-block py-2"
               >
                 Privacy Policy
               </a>
               <a
                 href="/terms"
-                className="text-salon-muted text-xs hover:text-salon-gold transition-colors"
+                className="text-salon-muted text-xs hover:text-salon-gold transition-colors inline-block py-2"
               >
                 Terms of Service
               </a>

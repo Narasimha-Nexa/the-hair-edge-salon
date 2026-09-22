@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit, clientKey } from "@/lib/rate-limit";
 
 const PLACES_API_BASE = "https://places.googleapis.com/v1";
 
@@ -6,6 +7,19 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { path: string[] } }
 ) {
+  // Per-IP budget: every accepted request is proxied to Google with our API
+  // key, so unthrottled traffic would drain the Places quota (billing DoS).
+  const rl = rateLimit(`photo:${clientKey(request)}`, {
+    limit: 120,
+    windowMs: 60_000,
+  });
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: { "Retry-After": String(rl.retryAfterSec) } }
+    );
+  }
+
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
 
   if (!apiKey) {
@@ -15,13 +29,17 @@ export async function GET(
     );
   }
 
-  const name = params.path.join("/");
-  if (!name.startsWith("places/")) {
+  // Strict allowlist: a Google photo resource is a single alphanumeric
+  // token. Rejects traversal, query/hash injection and any extra path
+  // segment; the upstream host stays fixed to places.googleapis.com (no SSRF).
+  const bare = params.path.join("/").replace(/^places\//, "");
+  if (!/^[A-Za-z0-9_-]{1,128}$/.test(bare)) {
     return NextResponse.json({ error: "Invalid photo reference" }, { status: 400 });
   }
+  const name = `places/${bare}`;
 
-  const scriptUrl = request.nextUrl.searchParams.get("w") || "1600";
-  const width = Math.min(Math.max(parseInt(scriptUrl, 10) || 1600, 400), 2400);
+  const widthParam = request.nextUrl.searchParams.get("w") || "1600";
+  const width = Math.min(Math.max(parseInt(widthParam, 10) || 1600, 400), 2400);
 
   try {
     const response = await fetch(

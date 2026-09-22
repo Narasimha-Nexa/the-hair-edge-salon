@@ -14,7 +14,7 @@
 - Component structure is modular and reusable
 
 ### Critical Gaps (P0)
-1. **All 37 services use placeholder images** - 35 real images exist in `public/images/services` but aren't mapped
+1. **All 35 services use placeholder images** - 35 real images exist in `public/images/services` but aren't mapped (RESOLVED: 35/35 fully mapped)
 2. **Hero uses SVG placeholder** - No real salon photography
 3. **Business hours empty** - Config has empty strings, feature disabled
 4. **Modal accessibility broken** - No focus trapping, focus restoration, or keyboard-safe backdrop
@@ -44,11 +44,11 @@
 - hair-keratin (has image)
 - make-up (has image)
 
-**All 37 services have corresponding images!**
+**All 35 services have corresponding images!**
 
 ### Config Structure Analysis
 `salon.config.ts` has:
-- 11 categories with 37 services
+- 10 categories with 35 services
 - All services have `id`, `name`, `description`, `image` (placeholder), `isPlaceholder: true`
 - Branding colors defined but not as CSS variables
 - Features object controls section visibility
@@ -65,7 +65,7 @@
 
 ### Conversion Optimization Opportunities
 1. **No trust signals near CTAs** - Rating, location, experience badges missing
-2. **Services grid overwhelms** - 37 services at once, no featured hierarchy
+2. **Services grid overwhelms** - 35 services at once, no featured hierarchy
 3. **Booking form too open** - Free text time, past dates allowed, no confirmation expectation
 4. **No callback option** - Some customers prefer call back
 5. **No sticky mobile CTA** - Floating WhatsApp only, no "Book Now" bar

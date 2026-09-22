@@ -314,7 +314,7 @@
 
 ## Production Ready
 The website is now a fully functional, accessible, premium salon website with:
-- Real service images connected (35/37 services)
+- Real service images connected (35/35 services)
 - Editorial luxury layout with featured carousel
 - Full accessibility (WCAG 2.1 AA focus management, ARIA, keyboard nav)
 - Conversion-optimized booking with time slots, validation, callback option

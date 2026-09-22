@@ -14,7 +14,9 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--navbar-height);
+  /* Fixed navbar (64–80px) + safety margin so anchor targets never land
+     under the bar even if webfonts shift layout after the browser anchors. */
+  scroll-padding-top: calc(var(--navbar-height) + 24px);
   color-scheme: dark;
 }
 
@@ -151,5 +153,107 @@ textarea:focus-visible,
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* Hero compaction on short landscape viewports (e.g. 844×390 phones):
+   keeps headline + CTAs above the fold without affecting portrait/desktop. */
+@media (max-height: 560px) and (orientation: landscape) {
+  .hero-shell {
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+  .hero-shell h1 {
+    font-size: 2.25rem;
+  }
+  .hero-shell .hero-location,
+  .hero-shell .hero-divider,
+  .hero-shell .hero-badges {
+    display: none;
+  }
+  .hero-shell .hero-ctas {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Blog article body (posts render sanitized HTML from lib/blog-posts). */
+.blog-content {
+  color: var(--salon-muted);
+  line-height: 1.8;
+  font-size: 1.0625rem;
+}
+.blog-content > *:first-child {
+  margin-top: 0;
+}
+.blog-content h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.75rem;
+  line-height: 1.3;
+  color: var(--salon-white);
+  margin: 2.25rem 0 1rem;
+}
+.blog-content h3 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: var(--salon-gold);
+  margin: 1.75rem 0 0.75rem;
+}
+.blog-content p {
+  margin: 0 0 1.25rem;
+}
+.blog-content a {
+  color: var(--salon-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.blog-content a:hover {
+  color: var(--salon-gold-light);
+}
+.blog-content strong {
+  color: var(--salon-white);
+}
+.blog-content ul,
+.blog-content ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.5rem;
+}
+.blog-content ul {
+  list-style: disc;
+}
+.blog-content ol {
+  list-style: decimal;
+}
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
+.blog-content li::marker {
+  color: var(--salon-gold);
+}
+.blog-content table {
+  width: 100%;
+  margin: 1.5rem 0 2rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+.blog-content th,
+.blog-content td {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+.blog-content th {
+  background-color: var(--salon-surface);
+  color: var(--salon-gold);
+  font-weight: 600;
+}
+.blog-content tr:nth-child(even) td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+@media (max-width: 640px) {
+  .blog-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }

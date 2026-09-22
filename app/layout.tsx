@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { salonConfig } from "@/config/salon.config";
+import { serializeJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -27,10 +28,9 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Hair Edge Unisex Salon Madhapur | Best Hair Salon in Hyderabad | Book via WhatsApp",
-    template: `%s | ${salonConfig.business.name}`,
+    default: "Hair Edge Unisex Salon Madhapur | Best Hair Salon in Hyderabad | Book via WhatsApp",        template: `%s | Hair Edge Salon Madhapur`,
   },
-  description: "Hair Edge Unisex Salon in Madhapur, Hyderabad - Premium hair, beauty & grooming services. Hair cut, colour, keratin, beard grooming, waxing, facial, bridal makeup. Book appointment via WhatsApp. Open 8AM-10PM daily. 4.9★ Google rating.",
+  description: "Hair Edge Unisex Salon in Madhapur, Hyderabad - Premium hair, beauty & grooming services. Hair cut, colour, keratin, beard grooming, waxing, facial, bridal makeup. Book appointment via WhatsApp. Open daily till 11:30 PM. 4.6★ Google rating.",
   keywords: [
     "Hair Edge Unisex Salon",
     "Hair Edge Madhapur",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: salonConfig.business.name,
     title: "Hair Edge Unisex Salon Madhapur | Best Hair Salon in Hyderabad",
-    description: "Premium hair, beauty & grooming services in Madhapur, Hyderabad. Hair cut, colour, keratin, beard grooming, waxing, facial, bridal makeup. Book via WhatsApp. 4.9★ rating.",
+    description: "Premium hair, beauty & grooming services in Madhapur, Hyderabad. Hair cut, colour, keratin, beard grooming, waxing, facial, bridal makeup. Book via WhatsApp. 4.6★ rating.",
     images: [
       {
         url: "/images/og-image.jpg",
@@ -86,18 +86,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Hair Edge Unisex Salon Madhapur | Best Hair Salon in Hyderabad",
-    description: "Premium hair, beauty & grooming services in Madhapur, Hyderabad. Book via WhatsApp. 4.9★ rating.",
+    description: "Premium hair, beauty & grooming services in Madhapur, Hyderabad. Book via WhatsApp. 4.6★ rating.",
     images: ["/images/og-image.jpg"],
     creator: "@hairedgesalon",
   },
-  alternates: {
-    canonical: siteUrl,
-    languages: {
-      "en-IN": siteUrl,
-      "hi-IN": `${siteUrl}/hi`,
-      "te-IN": `${siteUrl}/te`,
-    },
-  },
+  // Canonical URLs are declared per page (every page links to itself).
+  // hreflang is intentionally omitted until localized (/hi, /te) pages exist.
   other: {
     "geo.region": "IN-TG",
     "geo.placename": "Madhapur, Hyderabad",
@@ -137,7 +131,7 @@ export default function RootLayout({
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         opens: "08:00",
-        closes: "22:00",
+        closes: "23:30",
       },
     ],
     currenciesAccepted: "INR",
@@ -166,6 +160,7 @@ export default function RootLayout({
     ],
     hasMap: salonConfig.google.mapsUrl,
     sameAs: [
+      ...(salonConfig.social.instagram ? [salonConfig.social.instagram] : []),
       salonConfig.google.mapsUrl,
       `https://wa.me/${salonConfig.contact.whatsapp.replace(/[^0-9]/g, "")}`,
     ],
@@ -192,6 +187,19 @@ export default function RootLayout({
       "Manicure",
       "Pedicure",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Salon Services in Madhapur, Hyderabad",
+      itemListElement: salonConfig.services.map((service, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Service",
+          name: service.name,
+          url: `${siteUrl}/services/${service.id}`,
+        },
+      })),
+    },
     serviceType: [
       "Hair Salon",
       "Beauty Salon",
@@ -217,7 +225,7 @@ export default function RootLayout({
         name: "What are the opening hours of Hair Edge Salon Madhapur?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Hair Edge Unisex Salon Madhapur is open daily from 8:00 AM to 10:00 PM, including weekends and public holidays.",
+          text: "Hair Edge Unisex Salon Madhapur is open daily from 8:00 AM to 11:30 PM, including weekends and public holidays.",
         },
       },
       {
@@ -225,7 +233,7 @@ export default function RootLayout({
         name: "How to book an appointment at Hair Edge Unisex Salon?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "You can book an appointment via WhatsApp by clicking the 'Book Appointment' button on our website or calling +91 89853 10570. We confirm availability and send confirmation via WhatsApp.",
+          text: `You can book an appointment via WhatsApp by clicking the 'Book Appointment' button on our website or calling ${salonConfig.contact.phoneDisplay}. We confirm availability and send confirmation via WhatsApp.`,
         },
       },
       {
@@ -276,11 +284,11 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
         />
         <link rel="sitemap" href="/sitemap.xml" />
         <link rel="robots" href="/robots.txt" />

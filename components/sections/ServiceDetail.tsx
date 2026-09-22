@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { salonConfig } from "@/config/salon.config";
 import { generateWhatsAppUrl, generateCallUrl } from "@/lib/utils";
+import { serializeJsonLd } from "@/lib/jsonld";
 import BookingModal from "@/components/services/BookingModal";
 import { useState } from "react";
 import type { Service, ServiceCategory } from "@/types/salon";
@@ -11,6 +12,8 @@ interface ServiceDetailProps {
   service: Service;
   category?: ServiceCategory;
 }
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hairedgesalon.in";
 
 export default function ServiceDetail({ service, category }: ServiceDetailProps) {
   const [bookingModal, setBookingModal] = useState(false);
@@ -25,6 +28,8 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
     "@type": "Service",
     name: service.name,
     description: service.description,
+    url: `${siteUrl}/services/${service.id}`,
+    image: `${siteUrl}${service.image}`,
     provider: {
       "@type": "BeautySalon",
       name: salonConfig.business.name,
@@ -70,12 +75,12 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceJsonLd) }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             "@context": "https://schema.org",
             "@type": "FAQPage",
             mainEntity: faqs.map((faq) => ({
@@ -83,6 +88,35 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
               name: faq.q,
               acceptedAnswer: { "@type": "Answer", text: faq.a },
             })),
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+              { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
+              ...(category
+                ? [
+                    {
+                      "@type": "ListItem",
+                      position: 3,
+                      name: category.name,
+                      item: `${siteUrl}/services#${category.id}`,
+                    },
+                  ]
+                : []),
+              {
+                "@type": "ListItem",
+                position: category ? 4 : 3,
+                name: service.name,
+                item: `${siteUrl}/services/${service.id}`,
+              },
+            ],
           }),
         }}
       />
@@ -95,13 +129,13 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
               <li className="text-salon-muted/50">/</li>
               <li><a href="/services" className="hover:text-salon-gold transition-colors">Services</a></li>
               <li className="text-salon-muted/50">/</li>
-              <li><a href={`/services/${category?.id}`} className="hover:text-salon-gold transition-colors">{category?.name}</a></li>
+              <li><a href={`/services#${category?.id}`} className="hover:text-salon-gold transition-colors">{category?.name}</a></li>
               <li className="text-salon-muted/50">/</li>
               <li className="text-salon-white font-medium" aria-current="page">{service.name}</li>
             </ol>
           </nav>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
               <Image
                 src={service.image}
@@ -109,7 +143,8 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                 fill
                 className="object-cover"
                 priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={90}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               {service.featured && (
                 <div className="absolute top-4 left-4 bg-salon-gold text-salon-primary text-sm font-medium px-3 py-1 rounded-full">
@@ -200,7 +235,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                 <div className="space-y-4" id="faq-section">
                   {faqs.map((faq, index) => (
                     <details key={index} className="group bg-salon-surface border border-white/10 rounded-xl p-5">
-                      <summary className="flex items-center justify-between cursor-pointer text-salon-white font-medium list-none">
+                      <summary className="flex items-center justify-between cursor-pointer text-salon-white font-medium list-none py-1.5">
                         {faq.q}
                         <svg className="w-5 h-5 text-salon-gold transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -223,7 +258,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    "4.9★ Google rating with 2000+ reviews",
+                    "4.6★ Google rating with 1,150+ reviews",
                     "8+ years of expertise in Madhapur",
                     "Certified stylists with international training",
                     "Premium products: L'Oréal, Wella, Olaplex, Kérastase",
@@ -232,7 +267,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                     "Convenient WhatsApp booking & confirmation",
                     "Located near Hitech City Metro Station",
                     "Ample parking available",
-                    "Open 8AM-10PM daily, including weekends",
+                    "Open daily till 11:30 PM, including weekends",
                   ].map((reason, index) => (
                     <div key={index} className="flex items-start gap-3 p-4 bg-salon-surface border border-white/10 rounded-xl">
                       <div className="w-8 h-8 bg-salon-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -299,7 +334,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                       <svg className="w-5 h-5 text-salon-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span>Daily: 8:00 AM - 10:00 PM</span>
+                      <span>Daily: 8:00 AM - 11:30 PM</span>
                     </p>
                     <a
                       href={salonConfig.google.mapsUrl}

@@ -26,19 +26,30 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     cat.services.some((s) => s.id === serviceId)
   );
 
+  const pagePath = `/services/${serviceId}`;
+
   return {
-    title: `${service.name} | Hair Edge Unisex Salon Madhapur`,
-    description: `${service.description} ${service.duration ? `Duration: ${service.duration}.` : ""} Book appointment via WhatsApp at Hair Edge Salon Madhapur, Hyderabad.`,
+    title: `${service.name} in Madhapur, Hyderabad`,
+    description: `${service.description}${service.duration ? ` Duration: ${service.duration}.` : ""} Book ${service.name} at Hair Edge Unisex Salon, Madhapur, Hyderabad - 4.6★ rated, open daily till 11:30 PM. Instant confirmation via WhatsApp.`,
+    alternates: { canonical: pagePath },
     openGraph: {
-      title: `${service.name} | Hair Edge Unisex Salon Madhapur`,
+      title: `${service.name} in Madhapur, Hyderabad | ${salonConfig.business.name}`,
       description: service.description,
-      images: service.image ? [{ url: service.image, alt: service.name }] : [],
+      url: pagePath,
+      images: [
+        {
+          url: "/images/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${service.name} at ${salonConfig.business.name}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${service.name} | Hair Edge Unisex Salon Madhapur`,
+      title: `${service.name} in Madhapur, Hyderabad`,
       description: service.description,
-      images: service.image ? [service.image] : [],
+      images: ["/images/og-image.jpg"],
     },
     other: {
       "geo.region": "IN-TG",
@@ -69,7 +80,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   );
 
   return (
-    <main className="min-h-screen bg-salon-primary">
+    <main className="min-h-screen bg-salon-primary pt-16 md:pt-20">
       <Navbar />
       <ServiceDetail service={service} category={category} />
       <Footer />

@@ -1,12 +1,14 @@
 import { Metadata } from "next";
 import { salonConfig } from "@/config/salon.config";
+import { generateCallUrl } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 
 export const metadata: Metadata = {
-  title: `Terms of Service | ${salonConfig.business.name}`,
-  description: "Terms of Service for Hair Edge Unisex Salon Madhapur. Please read these terms carefully before using our website and booking services.",
+  title: "Terms of Service",
+  description: "Terms of Service for Hair Edge Unisex Salon Madhapur, Hyderabad. Please read these terms carefully before using our website and booking services.",
+  alternates: { canonical: "/terms" },
   robots: { index: true, follow: true },
 };
 
@@ -40,7 +42,7 @@ export default function TermsOfService() {
               <ul className="space-y-3 text-salon-muted leading-relaxed list-disc list-inside">
                 <li>Booking requests submitted via our Website are sent directly to our WhatsApp business account.</li>
                 <li>Submitting a booking request does <strong>not</strong> guarantee an appointment. All appointments are confirmed by our salon staff via WhatsApp or phone.</li>
-                <li>We will confirm availability for your requested date and time within business hours (8:00 AM – 10:00 PM daily).</li>
+                <li>We will confirm availability for your requested date and time within business hours (8:00 AM – 11:30 PM daily).</li>
                 <li>Please provide accurate contact information so we can reach you for confirmation.</li>
                 <li>Walk-in customers may be accommodated based on availability, but appointments are recommended.</li>
               </ul>
@@ -150,8 +152,8 @@ export default function TermsOfService() {
               <address className="not-italic text-salon-muted leading-relaxed mt-4 space-y-2">
                 <p><strong>{salonConfig.business.name}</strong></p>
                 <p>{salonConfig.address.full}</p>
-                <p>Phone: <a href="tel:+918985310570" className="text-salon-gold hover:text-salon-gold-light">+91 89853 10570</a></p>
-                <p>WhatsApp: <a href={salonConfig.contact.whatsapp ? `https://wa.me/${salonConfig.contact.whatsapp.replace(/[^0-9]/g, "")}` : "#"} className="text-salon-gold hover:text-salon-gold-light">+91 63048 84778</a></p>
+                <p>Phone: <a href={generateCallUrl()} className="text-salon-gold hover:text-salon-gold-light">{salonConfig.contact.phoneDisplay}</a></p>
+                <p>WhatsApp: <a href={salonConfig.contact.whatsapp ? `https://wa.me/${salonConfig.contact.whatsapp.replace(/[^0-9]/g, "")}` : "#"} className="text-salon-gold hover:text-salon-gold-light">{salonConfig.contact.whatsappDisplay}</a></p>
               </address>
             </section>
           </div>

@@ -17,12 +17,11 @@ export default function CategoryFilter({
 
   return (
     <div className="mb-10" role="group" aria-label="Service categories">
-      <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0" role="tablist">
+      <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 snap-x">
         <button
-          role="tab"
-          aria-selected={activeCategory === "all"}
+          aria-pressed={activeCategory === "all"}
           onClick={() => onCategoryChange("all")}
-          className={`flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary ${
+          className={`flex-shrink-0 snap-start px-5 py-3 rounded-full text-sm font-medium transition-all duration-200 border focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary ${
             activeCategory === "all"
               ? "bg-salon-gold text-salon-primary border-salon-gold shadow-[0_0_20px_rgba(201,162,39,0.3)]"
               : "bg-transparent text-salon-muted border-white/20 hover:border-salon-gold/50 hover:text-salon-white"
@@ -34,10 +33,9 @@ export default function CategoryFilter({
         {categories.map((category) => (
           <button
             key={category.id}
-            role="tab"
-            aria-selected={activeCategory === category.id}
+            aria-pressed={activeCategory === category.id}
             onClick={() => onCategoryChange(category.id)}
-            className={`flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border focus-visible:ring-2 focus-visible:ring-[var(--cat-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary ${
+            className={`flex-shrink-0 snap-start px-5 py-3 rounded-full text-sm font-medium transition-all duration-200 border focus-visible:ring-2 focus-visible:ring-[var(--cat-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-salon-primary ${
               activeCategory === category.id
                 ? "bg-[var(--cat-accent)] text-salon-primary border-[var(--cat-accent)] shadow-[0_0_20px_rgba(201,162,39,0.3)]"
                 : "bg-transparent text-salon-muted border-white/20 hover:border-[var(--cat-accent)]/50 hover:text-salon-white"

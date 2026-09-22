@@ -26,7 +26,7 @@ const blogSlugs = [
   "best-hair-salon-madhapur-hyderabad",
   "keratin-treatment-vs-rebonding",
   "bridal-makeup-packages-hyderabad",
-  "hair-colour-trends-2024",
+  "hair-colour-trends-2026",
   "beard-grooming-tips-men",
   "pre-bridal-skin-care-routine",
 ];

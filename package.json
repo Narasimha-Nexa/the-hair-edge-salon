@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 127.0.0.1",
     "build": "next build",
+    "postbuild": "node scripts/generate-sitemap.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "assets": "node scripts/generate-brand-assets.mjs",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
@@ -13,7 +16,7 @@
     "next": "^14.2.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "swiper": "^11.1.0"
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",

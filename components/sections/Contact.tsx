@@ -41,7 +41,7 @@ export default function Contact() {
                   href={generateCallUrl()}
                   className="text-salon-white hover:text-salon-gold transition-colors text-lg"
                 >
-                  {salonConfig.contact.phone}
+                  {salonConfig.contact.phoneDisplay}
                 </a>
               </div>
             )}
@@ -57,7 +57,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="text-salon-white hover:text-salon-gold transition-colors text-lg"
                 >
-                  {salonConfig.contact.whatsapp}
+                  {salonConfig.contact.whatsappDisplay}
                 </a>
               </div>
             )}

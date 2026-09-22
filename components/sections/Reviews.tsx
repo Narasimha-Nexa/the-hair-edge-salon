@@ -185,6 +185,7 @@ Source: Website Review Form`;
           id="review-name"
           type="text"
           autoComplete="name"
+          maxLength={80}
           value={name}
           onChange={(e) => setName(e.target.value)}
           aria-invalid={!!errors.name}
@@ -206,7 +207,7 @@ Source: Website Review Form`;
               onClick={() => setRating(star)}
               onMouseEnter={() => setHovered(star)}
               onMouseLeave={() => setHovered(0)}
-              className={`transition-transform hover:scale-110 focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-surface rounded ${
+              className={`p-1.5 transition-transform hover:scale-110 focus-visible:ring-2 focus-visible:ring-salon-gold focus-visible:ring-offset-2 focus-visible:ring-offset-salon-surface rounded ${
                 star <= (hovered || rating) ? "text-salon-gold" : "text-gray-600"
               }`}
               aria-label={`Rate ${star} star${star > 1 ? "s" : ""}`}
@@ -224,6 +225,7 @@ Source: Website Review Form`;
         <textarea
           id="review-text"
           rows={4}
+          maxLength={1000}
           value={review}
           onChange={(e) => setReview(e.target.value)}
           aria-invalid={!!errors.review}

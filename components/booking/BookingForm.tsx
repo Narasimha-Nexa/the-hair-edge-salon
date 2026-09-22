@@ -134,6 +134,7 @@ export default function BookingForm({ preselectedService = "" }: { preselectedSe
             name="name"
             autoComplete="name"
             inputMode="text"
+            maxLength={80}
             value={name}
             onChange={(e) => setName(e.target.value)}
             onBlur={() => handleBlur("name")}
@@ -157,6 +158,7 @@ export default function BookingForm({ preselectedService = "" }: { preselectedSe
             name="phone"
             autoComplete="tel"
             inputMode="tel"
+            maxLength={15}
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             onBlur={() => handleBlur("phone")}
@@ -233,7 +235,7 @@ export default function BookingForm({ preselectedService = "" }: { preselectedSe
               <option key={slot} value={slot}>{slot}</option>
             ))}
           </select>
-          <p className="text-salon-muted/60 text-xs mt-1">Salon hours: 08 AM - 10 PM daily</p>
+          <p className="text-salon-muted/60 text-xs mt-1">Salon hours: 08 AM - 11:30 PM daily</p>
         </div>
 
         <button

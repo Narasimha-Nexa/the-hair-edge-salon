@@ -24,7 +24,7 @@ export default function Hero() {
   const rating = place ? place.rating.toFixed(1) : "4.6";
   const reviewCount = place
     ? `${place.ratingCount.toLocaleString("en-IN")}+`
-    : "1,100+";
+    : "1,150+";
 
   const trustBadges = [
     { icon: "★", value: rating, label: "Google Rating" },
@@ -36,7 +36,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden py-24"
+      className="hero-shell relative min-h-[100svh] flex items-center justify-center overflow-hidden py-24"
       aria-labelledby="hero-title"
     >
       <div className="absolute inset-0" aria-hidden="true">
@@ -47,6 +47,8 @@ export default function Hero() {
             fill
             className="object-cover"
             priority
+            quality={90}
+            sizes="100vw"
           />
         ) : (
           <div className="w-full h-full bg-salon-surface" />
@@ -65,12 +67,12 @@ export default function Hero() {
             <br />
             <span className="text-salon-gold">UNISEX SALON</span>
           </h1>
-          <p className="text-salon-muted text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+          <p className="hero-location text-salon-muted text-lg md:text-xl mb-8 max-w-2xl mx-auto">
             {salonConfig.address.city}, {salonConfig.address.state}
           </p>
-          <div className="w-20 h-0.5 bg-salon-gold mx-auto mb-10" />
+          <div className="hero-divider w-20 h-0.5 bg-salon-gold mx-auto mb-10" />
 
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-12" role="group" aria-label="Primary actions">
+          <div className="hero-ctas flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-12" role="group" aria-label="Primary actions">
             <button
               type="button"
               onClick={() => setBookingOpen(true)}
@@ -99,7 +101,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-center" role="list" aria-label="Trust signals">
+          <div className="hero-badges flex flex-wrap items-center justify-center gap-6 md:gap-10 text-center" role="list" aria-label="Trust signals">
             {trustBadges.map((badge, index) => (
               <div key={index} className="flex flex-col items-center gap-1 animate-fade-in-up delay-200" role="listitem">
                 <div className="flex items-center gap-1.5 text-salon-gold text-xl md:text-2xl" aria-hidden="true">
