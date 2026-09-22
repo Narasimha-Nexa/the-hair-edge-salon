@@ -1,0 +1,14 @@
+# Hair Edge Unisex Salon - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://hairedgesalon.in/sitemap.xml
+
+# Disallow private/admin paths (none in this static site)
+# Disallow: /api/
+# Disallow: /_next/
+# Disallow: /*.json$
+
+# Crawl-delay for polite crawling
+Crawl-delay: 10
