@@ -3,277 +3,331 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://hairedgesalon.in</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/privacy</loc>
+    <loc>https://hair-edge-unisex-salon.netlify.app/about</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hair-edge-unisex-salon.netlify.app/privacy</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/terms</loc>
+    <loc>https://hair-edge-unisex-salon.netlify.app/terms</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/blog</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/blog</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-styling</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/areas/madhapur</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hair-edge-unisex-salon.netlify.app/areas/hitech-city</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hair-edge-unisex-salon.netlify.app/areas/gachibowli</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hair-edge-unisex-salon.netlify.app/areas/kondapur</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hair-edge-unisex-salon.netlify.app/areas/jubilee-hills</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hair-edge-unisex-salon.netlify.app/areas/banjara-hills</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hair-edge-unisex-salon.netlify.app/areas/kukatpally</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hair-edge-unisex-salon.netlify.app/areas/miyapur</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-styling</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-cut</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-cut</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-colour</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-colour</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-straightening</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-straightening</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-blow-dry</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-blow-dry</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-curling</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-curling</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-rebonding</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-rebonding</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/beard-styling</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/beard-styling</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/beard-shaving</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/beard-shaving</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/beard-trimming</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/beard-trimming</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/full-body-waxing</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/full-body-waxing</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/underarms-waxing</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/underarms-waxing</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/full-leg-waxing</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/full-leg-waxing</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/full-arm-waxing</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/full-arm-waxing</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/half-arm-waxing</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/half-arm-waxing</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/face-waxing</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/face-waxing</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/half-leg-waxing</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/half-leg-waxing</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-spa</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-spa</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-wash</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-wash</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/face-bleach</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/face-bleach</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/face-clean-up</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/face-clean-up</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/face-d-tan</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/face-d-tan</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/facial</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/facial</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/head-massage</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/head-massage</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/pedicure</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/pedicure</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/manicure</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/manicure</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/full-face-threading</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/full-face-threading</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/eye-brow-threading</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/eye-brow-threading</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/forehead-threading</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/forehead-threading</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/chin-threading</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/chin-threading</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/lip-threading</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/lip-threading</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/cheek-threading</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/cheek-threading</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/sideburn-threading</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/sideburn-threading</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/hair-keratin</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/hair-keratin</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/services/make-up</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://hair-edge-unisex-salon.netlify.app/services/make-up</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/blog/best-hair-salon-madhapur-hyderabad</loc>
+    <loc>https://hair-edge-unisex-salon.netlify.app/blog/best-hair-salon-madhapur-hyderabad</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/blog/keratin-treatment-vs-rebonding</loc>
+    <loc>https://hair-edge-unisex-salon.netlify.app/blog/keratin-treatment-vs-rebonding</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/blog/bridal-makeup-packages-hyderabad</loc>
+    <loc>https://hair-edge-unisex-salon.netlify.app/blog/bridal-makeup-packages-hyderabad</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/blog/hair-colour-trends-2026</loc>
+    <loc>https://hair-edge-unisex-salon.netlify.app/blog/hair-colour-trends-2026</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/blog/beard-grooming-tips-men</loc>
+    <loc>https://hair-edge-unisex-salon.netlify.app/blog/beard-grooming-tips-men</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hairedgesalon.in/blog/pre-bridal-skin-care-routine</loc>
+    <loc>https://hair-edge-unisex-salon.netlify.app/blog/pre-bridal-skin-care-routine</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

@@ -17,8 +17,8 @@ export default function Menu() {
     <section id="menu" className="py-20 md:py-28 bg-salon-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Our Menu"
-          subtitle="View our complete service menu"
+          title="Salon Menu & Prices"
+          subtitle="Complete hair, beauty & grooming price list — Madhapur, Hyderabad"
         />
 
         <div className="max-w-xl mx-auto">
@@ -31,7 +31,7 @@ export default function Menu() {
               >
                 <Image
                   src={salonConfig.assets.menu}
-                  alt="Salon Menu"
+                  alt={`${salonConfig.business.name} service menu with prices — Madhapur, Hyderabad`}
                   fill
                   quality={90}
                   sizes="(max-width: 640px) 100vw, 576px"
@@ -77,7 +77,7 @@ export default function Menu() {
           <div className="relative w-[90vw] max-w-4xl h-[85vh]">
             <Image
               src={salonConfig.assets.menu}
-              alt="Salon Menu - Full View"
+              alt={`${salonConfig.business.name} full service menu`}
               fill
               sizes="90vw"
               quality={90}

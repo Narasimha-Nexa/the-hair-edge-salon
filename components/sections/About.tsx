@@ -8,11 +8,29 @@ export default function About() {
     <section id="about" className="py-20 md:py-28 bg-salon-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="About the Salon"
-          subtitle={salonConfig.business.description || "Information coming soon"}
+          title="About Hair Edge Unisex Salon Madhapur"
+          subtitle={
+            salonConfig.business.description ||
+            "Certified stylists, premium products and strict hygiene in Madhapur, Hyderabad."
+          }
         />
 
         <div className="max-w-3xl mx-auto text-center">
+          <p className="text-salon-muted leading-relaxed mb-4">
+            Located opposite Hitech Theater Lane in Madhapur, Hair Edge serves clients from Hitech
+            City, Gachibowli, Kondapur and across Hyderabad. We combine international training with
+            everyday reliability — sterilised tools, transparent pricing, and WhatsApp booking that
+            confirms your slot before you leave home.
+          </p>
+          <p className="text-salon-muted leading-relaxed mb-8">
+            Open daily {salonConfig.hoursSpec.opensLabel} – {salonConfig.hoursSpec.closesLabel}.
+            Rated <span className="text-salon-gold font-medium">4.6★</span> on Google by 1,100+
+            clients.{" "}
+            <a href="/about" className="text-salon-gold hover:text-salon-gold-light underline underline-offset-4">
+              Learn more about us
+            </a>
+            .
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <div className="p-6">
               <div className="w-12 h-12 border border-salon-gold flex items-center justify-center mx-auto mb-4">

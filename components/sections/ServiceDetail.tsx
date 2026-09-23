@@ -14,7 +14,7 @@ interface ServiceDetailProps {
   category?: ServiceCategory;
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hairedgesalon.in";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hair-edge-unisex-salon.netlify.app";
 
 export default function ServiceDetail({ service, category }: ServiceDetailProps) {
   const [bookingModal, setBookingModal] = useState(false);
@@ -239,7 +239,7 @@ export default function ServiceDetail({ service, category }: ServiceDetailProps)
                 <div className="space-y-4" id="faq-section">
                   {faqs.map((faq, index) => (
                     <details key={index} className="group bg-salon-surface border border-white/10 rounded-xl p-5">
-                      <                      summary className="flex items-center justify-between cursor-pointer text-salon-white font-medium list-none py-2.5">
+                      <summary className="flex items-center justify-between cursor-pointer text-salon-white font-medium list-none py-2.5">
                         {faq.q}
                         <svg className="w-5 h-5 text-salon-gold transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

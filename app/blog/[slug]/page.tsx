@@ -10,7 +10,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hairedgesalon.in";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hair-edge-unisex-salon.netlify.app";
 
 interface BlogPostPageProps {
   params: { slug: string };
@@ -40,6 +40,8 @@ export async function generateMetadata({
       title: `${post.title} | ${salonConfig.business.name}`,
       description: post.excerpt,
       publishedTime: post.date,
+      modifiedTime: post.date,
+      authors: [salonConfig.business.name],
       images: [
         {
           url: "/images/og-image.jpg",

@@ -29,8 +29,8 @@ export default function Services() {
     <section id="services" className="py-20 md:py-28 bg-salon-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Our Services"
-          subtitle="A considered selection of our most-requested salon experiences"
+          title="Hair & Beauty Services in Madhapur"
+          subtitle="Hair cut, colour, keratin, beard grooming, facial, waxing & bridal makeup — book on WhatsApp"
         />
 
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">

@@ -9,13 +9,14 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hairedgesalon.in";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hair-edge-unisex-salon.netlify.app";
 
 export const metadata: Metadata = {
   title: "Hair & Beauty Tips & Guides",
   description: `Expert hair care tips, beauty trends, bridal makeup guides and grooming advice from ${salonConfig.business.name}, Madhapur, Hyderabad - written by certified stylists.`,
   alternates: { canonical: "/blog" },
   openGraph: {
+    title: `Hair & Beauty Blog | ${salonConfig.business.name}`,
     url: "/blog",
     description:
       "Expert hair care tips, beauty trends, bridal makeup guides and grooming advice from Hair Edge Unisex Salon Madhapur, Hyderabad.",
@@ -36,6 +37,28 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const blogListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: `${salonConfig.business.name} Blog`,
+  description:
+    "Hair care tips, beauty trends, bridal makeup guides and grooming advice from Hair Edge Unisex Salon Madhapur, Hyderabad.",
+  url: `${siteUrl}/blog`,
+  publisher: {
+    "@type": "BeautySalon",
+    name: salonConfig.business.name,
+    url: siteUrl,
+  },
+  blogPost: posts.map((post) => ({
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    url: `${siteUrl}/blog/${post.slug}`,
+    datePublished: post.date,
+    image: `${siteUrl}${post.image}`,
+  })),
+};
+
 export default function BlogIndexPage() {
   return (
     <main id="main-content" className="min-h-screen bg-salon-primary">
@@ -43,6 +66,10 @@ export default function BlogIndexPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(blogListJsonLd) }}
       />
       <section className="py-20 md:py-28 bg-salon-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

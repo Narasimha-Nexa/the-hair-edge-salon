@@ -7,11 +7,10 @@ import BookingModal from "@/components/services/BookingModal";
 import { track } from "@/lib/analytics";
 
 const navItems = [
-  { label: "Home", href: "/#home" },
-  { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
-  { label: "Menu", href: "/#menu" },
-  { label: "Reviews", href: "/#reviews" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -59,7 +58,7 @@ export default function Navbar() {
       </a>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="/#home" className="flex items-center gap-2 shrink-0">
+          <a href="/" className="flex items-center gap-2 shrink-0" aria-label={`${salonConfig.business.name} home`}>
             <span className="font-heading text-xl md:text-2xl text-salon-white whitespace-nowrap">
               THE HAIR EDGE
             </span>

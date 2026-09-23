@@ -1,14 +1,26 @@
 import fs from "fs";
 import path from "path";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://hairedgesalon.in";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://hair-edge-unisex-salon.netlify.app";
 
 const staticRoutes = [
-  { url: "", changefreq: "weekly", priority: "1.0" },
-  { url: "/privacy", changefreq: "monthly", priority: "0.8" },
-  { url: "/terms", changefreq: "monthly", priority: "0.8" },
-  { url: "/services", changefreq: "weekly", priority: "0.9" },
-  { url: "/blog", changefreq: "weekly", priority: "0.8" },
+  { url: "", file: "app/page.tsx", changefreq: "weekly", priority: "1.0" },
+  { url: "/about", file: "app/about/page.tsx", changefreq: "monthly", priority: "0.8" },
+  { url: "/privacy", file: "app/privacy/page.tsx", changefreq: "monthly", priority: "0.8" },
+  { url: "/terms", file: "app/terms/page.tsx", changefreq: "monthly", priority: "0.8" },
+  { url: "/services", file: "app/services/page.tsx", changefreq: "weekly", priority: "0.9" },
+  { url: "/blog", file: "app/blog/page.tsx", changefreq: "weekly", priority: "0.8" },
+];
+
+const areaSlugs = [
+  "madhapur",
+  "hitech-city",
+  "gachibowli",
+  "kondapur",
+  "jubilee-hills",
+  "banjara-hills",
+  "kukatpally",
+  "miyapur",
 ];
 
 const serviceIds = [
@@ -31,25 +43,43 @@ const blogSlugs = [
   "pre-bridal-skin-care-routine",
 ];
 
+function pageLastmod(relativePath, fallback) {
+  try {
+    const mtime = fs.statSync(path.join(process.cwd(), relativePath)).mtime;
+    return mtime.toISOString().split("T")[0];
+  } catch {
+    return fallback;
+  }
+}
+
 function generateSitemap() {
   const today = new Date().toISOString().split("T")[0];
+  const serviceLastmod = pageLastmod("components/sections/ServiceDetail.tsx", today);
+  const blogLastmod = pageLastmod("lib/blog-posts.ts", today);
+  const areaLastmod = pageLastmod("lib/areas.ts", today);
 
   const urls = [
     ...staticRoutes.map((route) => ({
       url: `${BASE_URL}${route.url}`,
-      lastmod: today,
+      lastmod: pageLastmod(route.file, today),
       changefreq: route.changefreq,
       priority: route.priority,
     })),
+    ...areaSlugs.map((slug) => ({
+      url: `${BASE_URL}/areas/${slug}`,
+      lastmod: areaLastmod,
+      changefreq: "monthly",
+      priority: "0.8",
+    })),
     ...serviceIds.map((id) => ({
       url: `${BASE_URL}/services/${id}`,
-      lastmod: today,
+      lastmod: serviceLastmod,
       changefreq: "weekly",
       priority: "0.8",
     })),
     ...blogSlugs.map((slug) => ({
       url: `${BASE_URL}/blog/${slug}`,
-      lastmod: today,
+      lastmod: blogLastmod,
       changefreq: "weekly",
       priority: "0.7",
     })),
@@ -74,6 +104,17 @@ ${urls
   const outputPath = path.join(process.cwd(), "public", "sitemap.xml");
   fs.writeFileSync(outputPath, xml);
   console.log(`Sitemap generated at ${outputPath} with ${urls.length} URLs`);
+
+  const robotsPath = path.join(process.cwd(), "public", "robots.txt");
+  const robots = `# Hair Edge Unisex Salon - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap (must match the live host Google indexes)
+Sitemap: ${BASE_URL}/sitemap.xml
+`;
+  fs.writeFileSync(robotsPath, robots);
+  console.log(`robots.txt generated at ${robotsPath} → ${BASE_URL}/sitemap.xml`);
 }
 
 generateSitemap();

@@ -48,7 +48,7 @@ export default function Gallery() {
       <section id="gallery" className="py-20 md:py-28 bg-salon-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title={galleryConfig.title}
+            title={`${galleryConfig.title} — ${salonConfig.business.name}`}
             subtitle={galleryConfig.subtitle}
           />
 
@@ -62,7 +62,7 @@ export default function Gallery() {
               >
                 <Image
                   src={image}
-                  alt={`Salon gallery image ${index + 1}`}
+                  alt={`${salonConfig.business.name} salon gallery photo ${index + 1} — Madhapur, Hyderabad`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   quality={85}
@@ -121,7 +121,7 @@ export default function Gallery() {
           >
             <Image
               src={images[lightboxIndex]}
-              alt={`Salon gallery image ${lightboxIndex + 1}`}
+              alt={`${salonConfig.business.name} gallery photo ${lightboxIndex + 1} of ${images.length}`}
               fill
               sizes="95vw"
               quality={90}

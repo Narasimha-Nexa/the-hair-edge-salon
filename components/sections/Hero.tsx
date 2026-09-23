@@ -65,12 +65,12 @@ export default function Hero() {
             {salonConfig.business.tagline}
           </p>
           <h1 id="hero-title" className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-salon-white mb-6 leading-[1.08] tracking-tight">
-            THE HAIR EDGE
+            Hair Edge Unisex Salon
             <br />
-            <span className="text-salon-gold">UNISEX SALON</span>
+            <span className="text-salon-gold">Best Hair Salon in Madhapur</span>
           </h1>
           <p className="hero-location text-salon-muted text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            {salonConfig.address.city}, {salonConfig.address.state}
+            Madhapur, Hyderabad — near Hitech City Metro
           </p>
           <div className="hero-divider w-20 h-0.5 bg-salon-gold mx-auto mb-10" />
 

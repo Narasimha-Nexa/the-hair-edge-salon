@@ -2,13 +2,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://hairedgesalon.in/sitemap.xml
-
-# Disallow private/admin paths (none in this static site)
-# Disallow: /api/
-# Disallow: /_next/
-# Disallow: /*.json$
-
-# Crawl-delay for polite crawling
-Crawl-delay: 10
+# Sitemap (must match the live host Google indexes)
+Sitemap: https://hair-edge-unisex-salon.netlify.app/sitemap.xml

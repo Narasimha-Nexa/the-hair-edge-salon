@@ -121,7 +121,7 @@ NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY=your_maps_embed_api_key
 GOOGLE_PLACE_ID=ChIJVVVVKV6RyzsR82Zy8PIOmmA
 
 # Optional
-NEXT_PUBLIC_SITE_URL=https://hairedgesalon.in
+NEXT_PUBLIC_SITE_URL=https://hair-edge-unisex-salon.netlify.app
 NEXT_PUBLIC_GA_ID=
 ```
 

@@ -9,12 +9,30 @@ import {
 import { track } from "@/lib/analytics";
 
 const quickLinks = [
-  { label: "Home", href: "/#home" },
-  { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
-  { label: "Menu", href: "/#menu" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
   { label: "Reviews", href: "/#reviews" },
   { label: "Contact", href: "/#contact" },
+];
+
+const popularServices = [
+  { label: "Hair Cut", href: "/services/hair-cut" },
+  { label: "Hair Colour", href: "/services/hair-colour" },
+  { label: "Keratin Treatment", href: "/services/hair-keratin" },
+  { label: "Beard Styling", href: "/services/beard-styling" },
+  { label: "Bridal Makeup", href: "/services/make-up" },
+  { label: "Facial", href: "/services/facial" },
+];
+
+const serviceAreas = [
+  { label: "Madhapur", href: "/areas/madhapur" },
+  { label: "Hitech City", href: "/areas/hitech-city" },
+  { label: "Gachibowli", href: "/areas/gachibowli" },
+  { label: "Kondapur", href: "/areas/kondapur" },
+  { label: "Kukatpally", href: "/areas/kukatpally" },
+  { label: "Miyapur", href: "/areas/miyapur" },
 ];
 
 export default function Footer() {
@@ -29,6 +47,10 @@ export default function Footer() {
             <p className="text-salon-muted text-sm leading-relaxed">
               {salonConfig.address.short}
             </p>
+            <p className="text-salon-muted text-sm leading-relaxed mt-3">
+              Hair, beauty & grooming salon near Hitech City Metro. Open daily till{" "}
+              {salonConfig.hoursSpec.closesLabel}.
+            </p>
           </div>
 
           <div>
@@ -41,6 +63,39 @@ export default function Footer() {
                   <a
                     href={link.href}
                     className="text-salon-muted text-sm hover:text-salon-gold transition-colors inline-block py-3"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-salon-white text-sm font-medium tracking-wider mb-4">
+              POPULAR SERVICES
+            </h4>
+            <ul className="space-y-2 mb-6">
+              {popularServices.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-salon-muted text-sm hover:text-salon-gold transition-colors inline-block py-1.5"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <h4 className="text-salon-white text-sm font-medium tracking-wider mb-3">
+              SERVICE AREAS
+            </h4>
+            <ul className="flex flex-wrap gap-x-3 gap-y-1">
+              {serviceAreas.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-salon-muted text-xs hover:text-salon-gold transition-colors inline-block py-1"
                   >
                     {link.label}
                   </a>
@@ -130,10 +185,7 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-
-          <div>
-            <h4 className="text-salon-white text-sm font-medium tracking-wider mb-4">
+            <h4 className="text-salon-white text-sm font-medium tracking-wider mb-4 mt-8">
               FOLLOW US
             </h4>
             {salonConfig.social.instagram && (
@@ -143,7 +195,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-salon-muted text-sm hover:text-salon-gold transition-colors py-2.5"
               >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                 </svg>
                 Instagram
@@ -166,9 +218,15 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-salon-muted text-xs">
               © {new Date().getFullYear()} {salonConfig.business.name}. All
-              rights reserved.
+              rights reserved. Madhapur, Hyderabad.
             </p>
             <div className="flex items-center gap-6">
+              <a
+                href="/about"
+                className="text-salon-muted text-xs hover:text-salon-gold transition-colors inline-block py-3.5"
+              >
+                About
+              </a>
               <a
                 href="/privacy"
                 className="text-salon-muted text-xs hover:text-salon-gold transition-colors inline-block py-3.5"

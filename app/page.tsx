@@ -9,6 +9,7 @@ import Transformations from "@/components/sections/Transformations";
 import Brands from "@/components/sections/Brands";
 import Menu from "@/components/sections/Menu";
 import Reviews from "@/components/sections/Reviews";
+import Faq from "@/components/sections/Faq";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
@@ -30,6 +31,7 @@ export default function Home() {
       <Brands />
       <Menu />
       <Reviews />
+      <Faq />
       <Contact />
       <Footer />
       <FloatingWhatsApp />

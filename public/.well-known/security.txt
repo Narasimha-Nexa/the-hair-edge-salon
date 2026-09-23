@@ -1,3 +1,3 @@
-Contact: https://hairedgesalon.in/#contact
-Policy: https://hairedgesalon.in/privacy
+Contact: https://hair-edge-unisex-salon.netlify.app/#contact
+Policy: https://hair-edge-unisex-salon.netlify.app/privacy
 Expires: 2027-09-22T00:00:00.000Z
